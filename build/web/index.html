@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Proyecto Laboratorio</title>
+        <meta charset="UTF-8"/>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/topnav.css">
+        <link rel="stylesheet" type="text/css" href="css/modal.css">
+        <script type="text/javascript" src="js/logout.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="#"><i class="fas fa-home" style="padding-right: 10px;"></i>Inicio</a>
+            <button onclick="document.getElementById('id01').style.display='block';" style="butLog">Iniciar sesión</button>
+        </div>
+        <div id="id01" class="modal">
+            <form class="modal-content animate" onsubmit="return control()" method="POST" action="indexLogin">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="imagenes/00.png" alt="logo" class="logo">
+                </div>
+                <div class="container">
+                    <label for="uname"><b>Usuario:</b></label>
+                    <input id="uname" type="text" placeholder="Ingrese su usuario..." name="uname">
+
+                    <label for="psw"><b>Contraseña:</b></label>
+                    <input id="psw" type="password" placeholder="Ingrese su contraseña..." name="psw">
+
+                    <button class="butSty" type="submit">Iniciar sesión</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            var modal = document.getElementById('id01');
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <center><img class="img" src="imagenes/00.png"/></center>
+        <center><p>Bienvenida/a, por favor presione el botón para ver la lista de parejas.</p></center>
+        <center>
+            <form method="POST" action="listaParejasSinLogin">
+                <button name="btnListaParejas" class="butSty" style="width: 15%;">Parejas</button>
+            </form>
+        </center>
+        <script>
+            function control(){
+                if(document.getElementById('uname').value == null || 
+                        document.getElementById('uname').value == ""|| 
+                        document.getElementById('uname').value != "admin"){
+                    alert('Debe ingresar un usuario válido.');
+                    document.getElementById('uname').focus();
+                    return false;
+                }
+                else if(document.getElementById('psw').value == null || 
+                        document.getElementById('psw').value == ""|| 
+                        document.getElementById('psw').value != "admin"){
+                    alert('El campo no puede estar vacío');
+                    document.getElementById('psw').focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>
